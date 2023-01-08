@@ -1,0 +1,248 @@
+html {
+  position: relative;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #E5E5E5;
+  min-width: 320px;
+  font-family: Inter, sans-serif;
+}
+fieldset {
+  padding: 0;
+}
+
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+
+.form-container {
+  position: relative;
+  top: 30px;
+  padding: 32px 106px;
+  margin: 0 auto;
+  max-width: 792px;
+  max-height: 613px;
+  background: #F2F0F9;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+}
+.form-container__img{
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  border: none;
+  background-position: 150px 200px;
+}
+
+.form-title {
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 21px;
+  line-height: 29px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6E6893;
+}
+
+.form-product {
+  max-width: 580px;
+  margin-bottom: 28px;
+  padding: 28px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.form-product__input-wrapper {
+  border: none;
+}
+
+.form-product__area-wrapper {
+  border: none;
+}
+
+.form-product__input {
+  min-width: 250px;
+  height: 40px;
+  background: #F4F2FF;
+  border-radius: 6px;
+  border: none;
+}
+
+.checkbox {
+  position: relative;
+  font-size: 20px;
+  line-height: 40px;
+  padding-left: 70px;
+}
+
+.form-product__checkbox_input {
+  display: block;
+  position: relative;
+  top: 20px;
+  left: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.price {
+  grid-row: 4 / 5;
+  grid-column: 2 / 3;
+}
+
+.discount {
+  grid-row: 4 / 5;
+  grid-column: 1 / 2;
+}
+
+.image {
+  grid-row: 5 / 6;
+  grid-column: 2 / 3;
+}
+
+.area {
+  grid-row: 1 / 3;
+  grid-column: 2 / 3;
+}
+
+.form-product__checkbox_input:before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #F4F2FF;
+  border-radius: 8px;
+}
+
+.form-product__checkbox_input:after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  width: 20px;
+  height: 10px;
+  border: 3px solid black;
+  border-top: none;
+  border-right: none;
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+
+.form-product__checkbox_input:focus-visible {
+  outline: none;
+}
+
+.form-product__checkbox_input:checked:after {
+  opacity: 1
+}
+
+.form-product__checkbox:checked:focus + .form-product__input_discount {
+  background-color: #F2F0F9;
+}
+
+.form-product__input_discount {
+  min-width: 200px;
+  margin-left: 50px;
+  background: #EEEEEE;
+}
+
+.form-product__area {
+  resize: none;
+  min-width: 250px;
+  min-height: 112px;
+  background: #F4F2FF;
+  border: none;
+  border-radius: 6px;
+}
+
+.form-product__title {
+  padding: 0 0 0 10px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6E6893;
+}
+
+.form-product__title label {
+  margin-bottom: 5px;
+}
+
+.form-product__button {
+  max-height: 39px;
+  padding: 10px 25px;
+  background: #6D5BD0;
+  border-radius: 6px;
+  border: none;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+}
+
+.image {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.form-content {
+  display: grid;
+  grid-template-columns: minmax(200px, 250px) minmax(200px, 250px);
+  grid-template-rows: 1fr 1fr 1fr 1fr minmax(30px, 39px);
+  gap: 12px 24px;
+}
+
+
+.total {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #6E6893;
+}
+
+.total span {
+  color: #6E6893;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.78px;
+}
+
+.form-product-footer {
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.form-line {
+  display: inline-block;
+  width: 580px;
+  height: 1px;
+  background: #C6C2DE;
+  margin-bottom: 21px;
+}

@@ -27,11 +27,14 @@ fieldset {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 
+.overlay-flex {
+  display: flex;
+}
 
 .form-container {
   position: relative;
@@ -245,4 +248,28 @@ fieldset {
   height: 1px;
   background: #C6C2DE;
   margin-bottom: 21px;
+}
+
+.group-id {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-id {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: #C5C5C5;
+}
+.form-id:before {
+  content: '';
+  width: 15px;
+  height:15px;
+  background-image: url("/image/free-icon-google-docs-8054953.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-size: 13px 13px;
+  background-position: -1px 2px;
+
 }

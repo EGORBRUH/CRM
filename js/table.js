@@ -58,19 +58,35 @@ const newArr = [
     }
   }
 ]
-const createRow = (obj) => {
+
+const table = document.querySelector('.cms > tbody')
+console.log(table)
+const createRow = (id, title, category, units, count, price) => {
   const tr = document.createElement('tr');
-  for (let i in obj) {
-    const td = document.createElement('td');
-    td.textContent = obj[i];
-    tr.append(td);
-  }
+  tr.innerHTML = `
+      <tr class="cms-body-1">
+        <td>${id}</td>
+        <td>${title}</td>
+        <td>${category}</td>
+        <td>${units}</td>
+        <td>${count}</td>
+        <td>${price}</td>
+        <td>${id}</td>
+        <td><button class="no-image"></button></td>
+        <td><button class="pen"></button></td>
+        <td><button class="basket"></button></td>
+      </tr>
+  `
   return tr;
-};
+}
 
 const renderGoods = (newArr) => {
-  const arr = newArr.map(item => createRow(item));
-  return arr;
+  newArr.map(item => {
+    console.log(item);
+    table.append(createRow(item.id, item.title, item.category, item.units, item.count, item.price))
+  });
+
+
 };
 
-console.log(renderGoods(newArr))
+renderGoods(newArr);

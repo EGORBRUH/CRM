@@ -73,7 +73,7 @@ body {
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  align-items: center;
+  text-align: center;
   color: #25213B;
   border-spacing: 0 0;
 }
@@ -148,6 +148,7 @@ body {
   font-size: 16px;
   line-height: 19px;
   color: #25213B;
+  cursor: pointer;
   background: #FFFFFF;
   border: 1px solid #C6C2DE;
   border-radius: 6px;
@@ -172,6 +173,7 @@ body {
   margin-left: auto;
   font-size: 16px;
   line-height: 19px;
+  cursor: pointer;
   text-transform: uppercase;
   color: #FFFFFF;
   background: #6D5BD0;
@@ -231,6 +233,7 @@ body {
   top: 10px;
   position: absolute;
   background: transparent;
+  cursor: pointer;
   border: none;
 }
 
@@ -239,6 +242,7 @@ body {
   right: 5px;
   position: absolute;
   background: transparent;
+  cursor: pointer;
   border: none;
 }
 

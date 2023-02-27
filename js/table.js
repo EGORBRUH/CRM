@@ -60,8 +60,7 @@ const newArr = [
 ]
 
 const table = document.querySelector('.cms > tbody')
-console.log(table)
-const createRow = (id, title, category, units, count, price) => {
+const createRow = ({id, title, category, units, count, price}) => {
   const tr = document.createElement('tr');
   tr.innerHTML = `
       <tr class="cms-body-1">
@@ -82,11 +81,35 @@ const createRow = (id, title, category, units, count, price) => {
 
 const renderGoods = (newArr) => {
   newArr.map(item => {
-    console.log(item);
-    table.append(createRow(item.id, item.title, item.category, item.units, item.count, item.price))
+    table.append(createRow(item))
   });
-
 
 };
 
 renderGoods(newArr);
+
+
+
+const btnAdd = document.querySelector('.cms-btn');
+const overlay = document.querySelector('.overlay');
+const overlayFlex = document.querySelector('.overlay-flex')
+const modalOff = document.querySelector('.cms-wrapper');
+const modalClose = document.querySelector('.form-container__img');
+
+
+btnAdd.addEventListener('click', () => {
+  overlay.classList.add('overlay-flex');
+});
+
+modalOff.addEventListener('click', (event) => {
+  const target = event.target;
+
+  if (target.closest('.form-container__img') || target === overlay) {
+    overlay.classList.remove('overlay-flex');
+  }
+
+});
+
+modalClose.addEventListener('click', () => {
+  overlayFlex.classList.add('form-container_close');
+})

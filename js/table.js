@@ -62,6 +62,7 @@ const newArr = [
 const table = document.querySelector('.cms > tbody')
 const createRow = ({id, title, category, units, count, price}) => {
   const tr = document.createElement('tr');
+  tr.classList.add('row')
   tr.innerHTML = `
       <tr class="cms-body-1">
         <td>${id}</td>
@@ -70,7 +71,7 @@ const createRow = ({id, title, category, units, count, price}) => {
         <td>${units}</td>
         <td>${count}</td>
         <td>${price}</td>
-        <td>${id}</td>
+        <td>${price}</td>
         <td><button class="no-image"></button></td>
         <td><button class="pen"></button></td>
         <td><button class="basket"></button></td>
@@ -95,7 +96,8 @@ const overlay = document.querySelector('.overlay');
 const overlayFlex = document.querySelector('.overlay-flex')
 const modalOff = document.querySelector('.cms-wrapper');
 const modalClose = document.querySelector('.form-container__img');
-
+const tr = document.querySelector('.row');
+const list = document.querySelector('.cms');
 
 btnAdd.addEventListener('click', () => {
   overlay.classList.add('overlay-flex');
@@ -112,4 +114,15 @@ modalOff.addEventListener('click', (event) => {
 
 modalClose.addEventListener('click', () => {
   overlayFlex.classList.add('form-container_close');
-})
+});
+
+// Кусок кода с задания Телефонный справочник
+list.addEventListener('click', e => {  // delBtn константа с кнопкой basket
+  const target = e.target;
+  if (e.target.closest('.basket')) {   //Кнопка с корзиной
+    e.target.closest('.row').remove()  ; // Элемент tr с классом row
+    console.log(list)
+  }
+
+
+});

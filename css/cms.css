@@ -216,7 +216,7 @@ body {
   line-height: 15px;
   letter-spacing: 0.05em;
   color: #6E6893;
-  text-align: right;
+  text-align: center;
 }
 
 .cms-arrow-left,
@@ -229,7 +229,7 @@ body {
 }
 
 .cms-btn-left {
-  right: 5px;
+  right: 20px;
   top: 10px;
   position: absolute;
   background: transparent;

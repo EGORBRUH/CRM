@@ -184,7 +184,7 @@ body {
   background: url("../image/search.svg") #F4F2FF no-repeat 10px;
   position: absolute;
   top: 15px;
-  left: 150px;
+  left: 200px;
   width: 392px;
   height: 40px;
   border: none;
@@ -278,6 +278,18 @@ body {
   text-align: center;
 }
 
+th {
+  text-align: center;
+}
+
+.row {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #25213B;
+  border-spacing: 0 0;
+}
 .no-image {
   background: url("../image/carbon_no-image.svg") no-repeat #ffffff;
   border: none;

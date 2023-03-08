@@ -59,19 +59,26 @@ const newArr = [
   }
 ]
 
+const addProductData = (product) => {
+  newArr.push(product);
+  console.log(newArr)
+}
+const modal = document.querySelector('.form-id').textContent;
+console.log(modal);
+
 const table = document.querySelector('.cms > tbody')
-const createRow = ({id, title, category, units, count, price}) => {
+const createRow = ({id, title, category, units, count, price, total}) => {
   const tr = document.createElement('tr');
   tr.classList.add('row')
   tr.innerHTML = `
-      <tr class="cms-body-1">
+      <tr>
         <td>${id}</td>
         <td>${title}</td>
         <td>${category}</td>
         <td>${units}</td>
         <td>${count}</td>
         <td>${price}</td>
-        <td>${price}</td>
+        <td>${1000}</td>
         <td><button class="no-image"></button></td>
         <td><button class="pen"></button></td>
         <td><button class="basket"></button></td>
@@ -99,22 +106,29 @@ const modalClose = document.querySelector('.form-container__img');
 const tr = document.querySelector('.row');
 const list = document.querySelector('.cms');
 
-btnAdd.addEventListener('click', () => {
-  overlay.classList.add('overlay-flex');
-});
 
-modalOff.addEventListener('click', (event) => {
-  const target = event.target;
+const modalControl = (btnAdd, modalClose) => {
+  const openModal = () => {
+    overlay.classList.add('overlay-flex');
+  }
 
-  if (target.closest('.form-container__img') || target === overlay) {
+  const closeModal = () => {
     overlay.classList.remove('overlay-flex');
   }
 
-});
+  btnAdd.addEventListener('click', openModal);
 
-modalClose.addEventListener('click', () => {
-  overlayFlex.classList.add('form-container_close');
-});
+  modalOff.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.closest('.form-container__img') || target === overlay) {
+      closeModal()
+    }
+  });
+    return {
+      closeModal
+    };
+}
+const {closeModal} = modalControl(btnAdd, modalClose)
 
 // Кусок кода с задания Телефонный справочник
 list.addEventListener('click', e => {  // delBtn константа с кнопкой basket
@@ -124,5 +138,8 @@ list.addEventListener('click', e => {  // delBtn константа с кноп�
     console.log(list)
   }
 
-
 });
+
+
+const formSpan = document.querySelector('.modal-span');
+formSpan.textContent = 0;

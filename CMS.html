@@ -19,6 +19,7 @@
   <div class="cms-wrapper">
     <table class="cms">
       <caption class="cms-title-table">CMS</caption>
+
       <thead class="cms-header">
       <div class="crm-line-head"><p class="crm-total-text">Итоговая стоимость: <span>$900.00</span></p></div>
       <tr class="cms-head-first">
@@ -33,11 +34,11 @@
         <th class="cms-units units">ед/изм</th>
         <th class="cms-number num">количество</th>
         <th class="cms-price price">цена</th>
-        <th colspan="4" class="cms-total">ИТОГ</th>
+        <th colspan="1" class="cms-total">ИТОГ</th>
       </tr>
       </thead>
-      <tbody class="cms-body">
 
+      <tbody class="cms-body">
       </tbody>
 
       <tfoot class="cms-footer">
@@ -51,7 +52,6 @@
     </table>
 
     <div class="overlay">
-
       <div class="form-container">
         <button class="form-container__img">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,8 +67,8 @@
         <form class="form-product" id="form" action="#" method="POST">
           <div class="form-content">
             <fieldset class="form-product__input-wrapper name">
-              <label for="name" class="form-product__title">Наименование </label>
-              <input class="form-product__input form-product__input_name" id="name" name="name" type="text">
+              <label for="title" class="form-product__title">Наименование </label>
+              <input class="form-product__input form-product__input_name" id="title" name="title" type="text">
             </fieldset>
 
             <fieldset class="form-product__input-wrapper category">
@@ -84,17 +84,17 @@
               <!-- Очень страшный input с checkbox -->
               <label for="checkbox" class="form-product__title">Дисконт </label>
               <input class="form-product__checkbox form-product__checkbox_input" id="checkbox" name="checkbox" type="checkbox">
-              <input class="form-product__input form-product__input_discount" name="discount" type="text">
+              <input class="form-product__input form-product__input_discount" id="cb-input" name="discount" type="text" disabled>
             </fieldset>
             <!------------------------------------------->
             <fieldset class="form-product__area-wrapper area">
               <label for="description" class="form-product__title">Описание </label>
-              <textarea class="form-product__area" id="description" name="description"></textarea>
+              <textarea class="form-product__area" id="description" name="description" type="text"></textarea>
             </fieldset>
 
             <fieldset class="form-product__input-wrapper amount">
-              <label for="amount" class="form-product__title">Количество</label>
-              <input class="form-product__input form-product__input_amount" id="amount" name="amount" type="number">
+              <label for="count" class="form-product__title">Количество</label>
+              <input class="form-product__input form-product__input_amount" id="count" name="count" type="number">
             </fieldset>
 
             <fieldset class="form-product__input-wrapper price">
@@ -104,15 +104,12 @@
             <button class="form-product__button image" form="form" type="submit">Добавить изображение</button>
           </div>
         </form>
-
         <div class="form-product-footer">
-          <p class="total">Итоговая стоимость: <span>$ 900.00</span></p>
+          <p class="total">Итоговая стоимость: <span class="modal-span">$ 900.00</span></p>
           <button class="form-product__button" form="form" type="submit">Добавить товар</button>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>
 

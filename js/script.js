@@ -1,69 +1,4 @@
 'use strict';
-
-
-
-const btnAdd = document.querySelector('.cms-btn');
-const overlay = document.querySelector('.overlay');
-const overlayFlex = document.querySelector('.overlay-flex')
-const modalOff = document.querySelector('.cms-wrapper');
-const modalClose = document.querySelector('.form-container__img');
-const tr = document.querySelector('.row');
-const list = document.querySelector('.cms'); // Вся таблица
-
-const closeBtn = document.querySelector('.form-container__img');
-const formTitle = document.querySelector('.form-title');
-const form = document.querySelector('.form-product');
-const checkBox = document.querySelector('.form-product__checkbox_input');
-const inputDiscount = document.querySelector('.form-product__input_discount');
-const totalPrice = document.querySelector('.total');
-const id = document.querySelector('.form-id');
-const idBtn = document.querySelector('.form-id:before');
-
-
-document.querySelector('#checkbox').addEventListener('change', function(){
-  this.form.querySelector('.form-product__input_discount').disabled = !this.checked;
-  if (checkBox.checked === false){
-    inputDiscount.value = '';
-  }  // событие на чекбоксе для блокировки и очистки поля
-});
-
-const addProductPage = (product, list) => {
-  list.append(createRow(product))
-}
-
-const formControl = (form, list, closeModal) => {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log(form)
-    const formData = new FormData(e.target);
-
-    const newProduct = Object.fromEntries(formData);
-    console.log(newProduct);
-
-
-    form.reset();
-    closeModal();
-    addProductPage(newProduct, list);
-
-  })
-}
-formControl(form, list, closeModal);
-
-const mainTotal = document.querySelector('.main-total');
-const totalResult = document.querySelectorAll('.total-result');
-console.log(mainTotal)
-const totalResultFoo = (element) => {
-  let totalRes = 0;
-  totalResult.forEach(e => {
-    console.log(e);
-
-    totalRes += +e.textContent
-  })
-  mainTotal.textContent = totalRes;
-}
-
-totalResultFoo();
-
 const newArr = [
   {
     "id": 253842678,
@@ -123,10 +58,35 @@ const newArr = [
   }
 ]
 
+
+const btnAdd = document.querySelector('.cms-btn');
+const overlay = document.querySelector('.overlay');
+const overlayFlex = document.querySelector('.overlay-flex')
+const modalOff = document.querySelector('.cms-wrapper');
+const modalClose = document.querySelector('.form-container__img');
+const tr = document.querySelector('.row');
+const list = document.querySelector('.cms'); // Вся таблица
+
+const closeBtn = document.querySelector('.form-container__img');
+const formTitle = document.querySelector('.form-title');
+const form = document.querySelector('.form-product');
+const checkBox = document.querySelector('.form-product__checkbox_input');
+const inputDiscount = document.querySelector('.form-product__input_discount');
+const totalPrice = document.querySelector('.total');
+const id = document.querySelector('.form-id');
+const idBtn = document.querySelector('.form-id:before');
+
+const formSpan = document.querySelector('.modal-span'); // итоговая стоимость в модальном окне
+// Все ячейки в таблице с и тоговой стоимостью
+const amount = document.querySelector('.form-product__input_amount');  // Инпут с колличеством в модальном окне
+const price = document.querySelector('.form-product__input_price'); // Инпут с суммой товара в модальном окне
+const mainTotal = document.querySelector('.main-total');
+
+
 const addProductData = (product) => { // запушивание нового продукта
   newArr.push(product);
-  console.log(newArr)
-}
+  console.log(newArr);
+};
 const modal = document.querySelector('.form-id').textContent;
 console.log(modal);
 
@@ -149,20 +109,30 @@ const createRow = ({id, title, category, units, amount, price}) => {  //Функ
       </tr>
   `
   return tr;
-}
-
-const renderGoods = (newArr) => {  // Функция обновления
-  newArr.map(item => {
-    table.append(createRow(item))
-
-  });
-  totalResultFoo()
 };
 
-renderGoods(newArr);
+const totalResultFoo = () => {
+  const totalResult = document.querySelectorAll('.total-result');
+  let totalRes = 0;
+  console.log(totalResult);
+  totalResult.forEach(e => {
+    console.log(e);
+    totalRes += +e.textContent;
+  })
+  mainTotal.textContent = totalRes;
+};
+
+const renderGoods = (newArr) => {  // Функция обновления
+  console.log(newArr);
+  newArr.map(item => {
+    table.append(createRow(item));
+  });
+  totalResultFoo();
+};
 
 
-const modalControl = (btnAdd, modalClose) => {   // Функция открытия/ закрытия модального окна
+
+const modalControl = (btnAdd) => {   // Функция открытия/ закрытия модального окна
   const openModal = () => {
     overlay.classList.add('overlay-flex');
   }
@@ -196,10 +166,6 @@ list.addEventListener('click', e => {  //  Событие удаления ст�
 });
 
 
-const formSpan = document.querySelector('.modal-span'); // итоговая стоимость в модальном окне
-// Все ячейки в таблице с и тоговой стоимостью
-const amount = document.querySelector('.form-product__input_amount');  // Инпут с колличеством в модальном окне
-const price = document.querySelector('.form-product__input_price'); // Инпут с суммой товара в модальном окне
 
 amount.addEventListener('blur', e => {   // blur на inpute колличества товаров в модальном
   const target = e.target;
@@ -210,6 +176,39 @@ amount.addEventListener('blur', e => {   // blur на inpute колличест�
     }
   });
 })
+
+document.querySelector('#checkbox').addEventListener('change', function(){
+  this.form.querySelector('.form-product__input_discount').disabled = !this.checked;
+  if (checkBox.checked === false){
+    inputDiscount.value = '';
+  }  // событие на чекбоксе для блокировки и очистки поля
+});
+
+const addProductPage = (product, list) => {
+  list.append(createRow(product))
+}
+
+const formControl = (form, list, closeModal) => {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log(form)
+    const formData = new FormData(e.target);
+
+    const newProduct = Object.fromEntries(formData);
+    closeModal();
+    addProductPage(newProduct, list);
+    renderGoods(newProduct);
+    form.reset();
+
+  })
+}
+formControl(form, list, closeModal);
+
+
+
+renderGoods(newArr);
+
+
 
 
 

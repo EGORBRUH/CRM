@@ -21,7 +21,7 @@
       <caption class="cms-title-table">CMS</caption>
 
       <thead class="cms-header">
-      <div class="crm-line-head"><p class="crm-total-text">Итоговая стоимость: <span>$900.00</span></p></div>
+      <div class="crm-line-head"><p class="crm-total-text">Итоговая стоимость: <span class="main-total">0</span>$</p></div>
       <tr class="cms-head-first">
         <th><button class="cms-button-filter">Фильтр</button></th>
         <th><input class="cms-input" type="text" placeholder="Поиск по наименованию и категории"></th>
@@ -81,20 +81,18 @@
               <input class="form-product__input form-product__input_units" id="units" name="units" type="text">
             </fieldset>
             <fieldset class="form-product__input-wrapper discount">
-              <!-- Очень страшный input с checkbox -->
               <label for="checkbox" class="form-product__title">Дисконт </label>
               <input class="form-product__checkbox form-product__checkbox_input" id="checkbox" name="checkbox" type="checkbox">
               <input class="form-product__input form-product__input_discount" id="cb-input" name="discount" type="text" disabled>
             </fieldset>
-            <!------------------------------------------->
             <fieldset class="form-product__area-wrapper area">
               <label for="description" class="form-product__title">Описание </label>
               <textarea class="form-product__area" id="description" name="description" type="text"></textarea>
             </fieldset>
 
             <fieldset class="form-product__input-wrapper amount">
-              <label for="count" class="form-product__title">Количество</label>
-              <input class="form-product__input form-product__input_amount" id="count" name="count" type="number">
+              <label for="amount" class="form-product__title">Количество</label>
+              <input class="form-product__input form-product__input_amount" id="amount" name="amount" type="number">
             </fieldset>
 
             <fieldset class="form-product__input-wrapper price">
@@ -105,7 +103,7 @@
           </div>
         </form>
         <div class="form-product-footer">
-          <p class="total">Итоговая стоимость: <span class="modal-span">$ 900.00</span></p>
+          <p class="total">Итоговая стоимость: <span class="modal-span" id="_amount">0</span>$</p>
           <button class="form-product__button" form="form" type="submit">Добавить товар</button>
         </div>
       </div>

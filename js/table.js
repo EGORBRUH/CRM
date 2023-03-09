@@ -59,7 +59,7 @@ const newArr = [
   }
 ]
 
-const addProductData = (product) => {
+const addProductData = (product) => { // запушивание нового продукта
   newArr.push(product);
   console.log(newArr)
 }
@@ -67,7 +67,7 @@ const modal = document.querySelector('.form-id').textContent;
 console.log(modal);
 
 const table = document.querySelector('.cms > tbody')
-const createRow = ({id, title, category, units, count, price, total}) => {
+const createRow = ({id, title, category, units, count, price, total}) => {  //Функция создания строки
   const tr = document.createElement('tr');
   tr.classList.add('row')
   tr.innerHTML = `
@@ -78,7 +78,7 @@ const createRow = ({id, title, category, units, count, price, total}) => {
         <td>${units}</td>
         <td>${count}</td>
         <td>${price}</td>
-        <td>${1000}</td>
+        <td class="total-result">${1000}</td>
         <td><button class="no-image"></button></td>
         <td><button class="pen"></button></td>
         <td><button class="basket"></button></td>
@@ -87,7 +87,7 @@ const createRow = ({id, title, category, units, count, price, total}) => {
   return tr;
 }
 
-const renderGoods = (newArr) => {
+const renderGoods = (newArr) => {  // Функция обновления
   newArr.map(item => {
     table.append(createRow(item))
   });
@@ -104,10 +104,10 @@ const overlayFlex = document.querySelector('.overlay-flex')
 const modalOff = document.querySelector('.cms-wrapper');
 const modalClose = document.querySelector('.form-container__img');
 const tr = document.querySelector('.row');
-const list = document.querySelector('.cms');
+const list = document.querySelector('.cms'); // Вся таблица
 
 
-const modalControl = (btnAdd, modalClose) => {
+const modalControl = (btnAdd, modalClose) => {   // Функция открытия/ закрытия модального окна
   const openModal = () => {
     overlay.classList.add('overlay-flex');
   }
@@ -128,18 +128,36 @@ const modalControl = (btnAdd, modalClose) => {
       closeModal
     };
 }
+
 const {closeModal} = modalControl(btnAdd, modalClose)
 
-// Кусок кода с задания Телефонный справочник
-list.addEventListener('click', e => {  // delBtn константа с кнопкой basket
+
+list.addEventListener('click', e => {  //  Событие удаления строки из CMS
   const target = e.target;
   if (e.target.closest('.basket')) {   //Кнопка с корзиной
     e.target.closest('.row').remove()  ; // Элемент tr с классом row
     console.log(list)
   }
-
 });
 
 
-const formSpan = document.querySelector('.modal-span');
-formSpan.textContent = 0;
+const formSpan = document.querySelector('.modal-span'); // итоговая стоимость в модальном окне
+const totalResult = document.querySelectorAll('.total-result'); // Все ячейки в таблице с и тоговой стоимостью
+const amount = document.querySelector('.form-product__input_amount');  // Инпут с колличеством в модальном окне
+const price = document.querySelector('.form-product__input_price'); // Инпут с суммой товара в модальном окне
+
+
+
+
+amount.addEventListener('blur', e => {   // blur на inpute колличества товаров в модальном
+  const target = e.target;
+  form.price.addEventListener('blur', e => {  // blur на inpute цены товаров в модальном
+    const target = e.target;
+    if (target !== amount || target !== price) {
+      formSpan.textContent = price.value * amount.value;
+    }
+  });
+})
+
+
+

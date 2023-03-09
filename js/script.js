@@ -14,7 +14,7 @@ document.querySelector('#checkbox').addEventListener('change', function(){
   this.form.querySelector('.form-product__input_discount').disabled = !this.checked;
   if (checkBox.checked === false){
     inputDiscount.value = '';
-  }
+  }  // событие на чекбоксе для блокировки и очистки поля
 });
 
 const addProductPage = (product, list) => {
@@ -35,19 +35,10 @@ const formControl = (form, list, closeModal) => {
     closeModal()
     addProductPage(newProduct, list)
     addProductData(newProduct);
-    formControl(form, list, closeModal);
+
   })
 }
+formControl(form, list, closeModal);
 
-const price = document.querySelector('.form-product-footer');
-const altSpan = document.querySelector('span');
-altSpan.classList.add('total');
-altSpan.textContent = 0;
-
-
-price.addEventListener('click', e => {
-  const target = e.target;
-  console.log(target)
-})
 
 
